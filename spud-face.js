@@ -1,11 +1,11 @@
 window.addEventListener("DOMContentLoaded", (event) => {
 
   //!! ** Phase 1B: Update license with event delegation and event.target **
-  // const submitButton = document.getElementsByClassName("form__submit");
+  //
   const submitForm = document.getElementById('drivers-license-form')
 
   //const userInput = document.getElementById('title');
-  // 
+  //
 
 
   //!!UPDATE LICENSE FUNC
@@ -45,8 +45,33 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
   // ** Phase 2: Add focus and blur events to form inputs **
 
-  const allFormInputs = document.querySelectorAll(".form__input")
-  event.target("focus", (event))
+  const turnBlue = (id) => {
+    const ids = document.getElementById(id);
+
+    ids.addEventListener("focus", event => {
+      event.target.style.backgroundColor = "blue";
+    })
+  }
+  turnBlue("title");
+  turnBlue("first-name");
+  turnBlue("last-name");
+  turnBlue("eye-color");
+  turnBlue("height");
+  turnBlue("license-num");
+
+  const blurBlue = (id) => {
+    const ids = document.getElementById(id);
+
+    ids.addEventListener("blur", event => {
+      event.target.style.backgroundColor = "white";
+    })
+  }
+  blurBlue("title");
+  blurBlue("first-name");
+  blurBlue("last-name");
+  blurBlue("eye-color");
+  blurBlue("height");
+  blurBlue("license-num");
 
 
   //!! ** Phase 3: Check that license numbers match **
@@ -55,6 +80,17 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
 
   // ** Phase 4: Update submit button click count **
+  const counter = 0;
+  const submitButton = document.getElementsByClassName("form__submit");
+  console.log(submitButton);
+  submitButton.innerText = "";
+
+  submitButton.addEventListener("click", event => {
+    counter++;
+
+
+    submitButton.innerHTML = "Submit" + counter;
+  })
 
 
 
