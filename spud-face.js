@@ -3,10 +3,22 @@ window.addEventListener("DOMContentLoaded", (event) => {
   //!! ** Phase 1B: Update license with event delegation and event.target **
   //
   const submitForm = document.getElementById('drivers-license-form')
+  //////////////---------------------------------------
+  let labels = document.querySelectorAll('label');
+  userInput.forEach(label => {
 
-  //const userInput = document.getElementById('title');
-  //
 
+
+    licenseEl.innerHTML = userInput.value
+
+  });
+
+  const userInput = document.getElementById(inputId)
+  const licenseEl = document.getElementById(outputId)
+
+
+  // console.log('labels:', labels)
+  ////////////-------------------------------------------
 
   //!!UPDATE LICENSE FUNC
   function updateLicense(inputId, outputId) {
@@ -20,18 +32,19 @@ window.addEventListener("DOMContentLoaded", (event) => {
         const userInput = document.getElementById(inputId).value;
         const licenseEl = document.getElementById(outputId)
         licenseEl.innerHTML = userInput;
-        //!!DONOR CHECK
-        const donor = document.getElementById('donor-status')
-        donor.addEventListener('click', (event) => {
-          const cardDonor = document.getElementById('card-donor-status');
-          if (donor.checked && licenseId1Val === licenseIdComVal) {
-            cardDonor.innerText = "YES Please"
-
-          }
-        });
+        const cardDonor = document.getElementById('card-donor-status');
+        const donor = document.getElementById('donor-status') //
+        if (donor.checked) {
+          cardDonor.innerText = "YES Please"
+        }
       } else {
+        cardDonor.innerText = ""
         alert("License numbers do not match!")
       }
+
+
+      // donor.addEventListener('click', (event) => {
+      // });
     });
   }
 
@@ -80,19 +93,16 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
 
   // ** Phase 4: Update submit button click count **
-  const counter = 0;
-  const submitButton = document.getElementsByClassName("form__submit");
+  let counter = 0;
+  const submitButton = document.querySelector("button");
+  submitButton.setAttribute("id", "button")
   console.log(submitButton);
-  submitButton.innerText = "";
+  // submitButton.innerText = "";
 
   submitButton.addEventListener("click", event => {
     counter++;
 
 
-    submitButton.innerHTML = "Submit" + counter;
+    submitButton.innerText = "Submit" + " " + counter;
   })
-
-
-
-
 });
